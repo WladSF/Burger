@@ -1,90 +1,53 @@
 //Import(require) MySQL connection (connection.js) into orm.js
 //=========================================
-var connection = require("./connection.js");
+var connection = require("../Config/connection.js");
 
 
-function printQuestionMarks(num) {
-    var arr = [];
-  
-    for (var i = 0; i < num; i++) {
-      arr.push("?");
-    }
-  
-    return arr.toString();
-  }
-  
-  // Helper function to convert object key/value pairs to SQL syntax
-  function objToSql(ob) {
-    var arr = [];
-  
-    // loop through the keys and push the key/value as a string int arr
-    for (var key in ob) {
-      var value = ob[key];
-      // check to skip hidden properties
-      if (Object.hasOwnProperty.call(ob, key)) {
-        // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
-        if (typeof value === "string" && value.indexOf(" ") >= 0) {
-          value = "'" + value + "'";
-        }
-        // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-        // e.g. {sleepy: true} => ["sleepy=true"]
-        arr.push(key + "=" + value);
-      }
-    }
-  
-    // translate array of strings to a single comma-separated string
-    return arr.toString();
-  }
 
-//Create the methods to retieve and store data in the db.
 
 var orm = {
-    selectAll: function (tableInput, cb) {                          //ORM Method to select everything from the table
-        var queryString = "SELECT * FROM" + tableInput + ";";
-        connection.query(queryString, function (err, result) {      //connection.query to query the databse from SQL
-            if (err) throw err;
-            cb(result);
-        });
-    },
 
-    insertOne: function (table, cols, vals, cb) {
-        var queryString = "INSERT INTO" + table;
 
-        queryString += " (";
-        queryString += cols.toString();
-        queryString += ") ";
-        queryString += "VALUES (";
-        queryString += printQuestionMarks(vals.length);
-        queryString += ") ";
-
-        console.log(queryString);
-
-        connection.query(queryString, vals, function (err, result) {
+    // Select All Function
+    //________________________________
+    selectAll: function(tableInput, cb) {
+        var queryString = "SELECT * FROM " + tableInput + ";";
+        connection.query(queryString, function(err, result) {
             if (err) {
                 throw err;
-            }
+            } 
             cb(result);
         });
     },
-    // An example of objColVals would be {name: panther, sleepy: true}
-    updateOne: function (table, objColVals, condition, cb) {
-        var queryString = "UPDATE " + table;
 
-        queryString += " SET ";
-        queryString += objToSql(objColVals);
-        queryString += " WHERE ";
-        queryString += condition;
-
+    // Insert One Function
+    //________________________________
+    insertOne: function(burgerName, cb) { // Probably needs logic on orms.js side to parse input into MySQL format
+        // Code here
+        var queryString = "INSERT INTO burgers (burger_name) VALUES ('" + burgerName + "');";
+        console.log(burgerName);
         console.log(queryString);
-        connection.query(queryString, function (err, result) {
+        connection.query(queryString, function(err, result) {
+            if (err) {
+                throw err
+            }
+            cb(result);
+        })
+    },
+
+    // Update One Function
+    //________________________________
+    updateOne: function(idNumber, cb) {
+        var queryString = "UPDATE burgers SET devoured = NOT 0 WHERE id = " + idNumber + ";"
+    
+        connection.query(queryString, function(err, result) {
             if (err) {
                 throw err;
-            }
-
-            cb(result);
-        });
-    },
-};
+              }
+              cb(result);
+        })
+    }
+  };
 
 //Export the ORM object 
 //======================
