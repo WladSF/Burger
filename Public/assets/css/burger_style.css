@@ -20,39 +20,50 @@
     padding-top: 40px;
   }
   
-  h2 {
+  .uneaten-burgers h2 {
     text-align: center;
+    margin-left: 40px;
   }
   
   ul {
     list-style: none;
   }
-  
-  /* .uneaten-burgers li:before {
-    content: '🍔';
-  } */
-  
+
+  ul.eaten {
+    padding-left: 0px;
+  }
   
   .uneaten-burgers {
-    position: relative;
+    /* position: relative; */
     float: left;
     margin: 10px 0px 30px 20px;
+    padding-top: 20px;
   }
   
   .eaten-burgers {
-    position: relative;
-    margin: 10px 20px 250px 500px;
-    padding-top: 10px;
+    /* position: relative; */
+    margin: 10px 20px 150px 600px;
+    padding-top: 40px;
+    margin-left: 600px;
   }
-  
-  /* .eaten-burgers li:before {
-    content: '🍽';
-  } */
+
   
   .burger-form {
     position: initial;
-    margin: auto;
+    margin-left: 280px;
     width: 30%;
     padding-bottom: 40px;
+    text-align: center;
   } 
+
+  input#burg {
+    text-align: center;
+    padding: 4px 15px;
+    border-radius: 8px;
+  }
   
+  button {
+    padding: 4px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }

@@ -1,58 +1,6 @@
 {{!-- Setup the index.handlebars to have the template that Handlebars can render onto --}}
 {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
 
-{{!-- <div class="container-fluid">
-  <div class="row pb-5">
-    <div class="col-lg-12 text-center">
-      <img src="http://vectips.com/wp-content/uploads/2016/02/25.jpg" alt="burger" height="200" width="200">
-      <h1>Eat-Da-Burger!</h1>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-3"></div>
-
-    <div class="col-lg-3">
-
-      {{#each burgers}}
-      {{#unless devoured}}
-      {{> cards/burger-block devoured=true}}
-      {{/unless}}
-      {{/each}}
-
-    </div> --}}
-
-    {{!-- <h2>Eat Da Burger!</h2> --}}
-
-    {{!-- <div class="col-lg-3">
-
-      {{#each burgers}}
-      {{#if devoured}}
-      {{> cards/burger-block devoured=false}}
-      {{/if}}
-      {{/each}}
-    </div>
-    <div class="col-lg-3"></div>
-  </div>
-
-  <div class="row pt-5">
-    <div class="col-lg-12 text-center">
-
-      <h2>Enter a Burger</h2>
-      
-      <form class="create-form">
-
-        <div class="form-group">
-          <label for="ca">Burger Name:</label>
-          <input type="text" id="ca" name="name">
-        </div>
-
-        <button type="submit">Add burger</button>
-
-      </form>
-    </div>
-  </div>
-</div> --}}
 
 <div class="page-wrap">
 
@@ -60,11 +8,10 @@
 
 
 <div class="uneaten-burgers">
-<h2>Uneaten Burgers</h2>
+<h2>Waiting to be...</h2>
 
 
- {{!-- Adds list element for each uneaten burger. Adds 'devour' button from partials file to each uneaten burger --}}
- {{!-- --------------------------------------------------------------------------------------------------------- --}}
+ 
 <ul class="uneaten">
   {{#each burgers}}
     {{#unless devoured}}
@@ -76,10 +23,9 @@
 </div>
 
 <div class="eaten-burgers">
-<h2>Eaten Burgers</h2>
+<h2>DEVOURED!</h2>
 
-{{!-- Adds list element for each uneaten burger --}}
-{{!-- ----------------------------------------- --}}
+
 <ul class="eaten">
   {{#each burgers}}
     {{#if devoured}}
@@ -93,17 +39,18 @@
 
 
 <div class="burger-form">
-{{!-- The 'Add Burger' button --}}
-{{!-- ----------------------- --}}
+
 <h2>Add a Burger</h2>
+
 <form class="new-burger-form">
 
   <div class="form-group">
-    <label for="burg">Burger Name:</label>
-    <input type="text" id="burg" name="name">
+   
+    <input type="text" id="burg" name="name" placeholder="Burger name">
+    
   </div>
 
-  <button type="submit">Add Burger</button>
+  <button type="submit">Add</button>
 </form>
 </div>
 
