@@ -1,57 +1,46 @@
 {{!-- Setup the index.handlebars to have the template that Handlebars can render onto --}}
 {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
 
-
 <div class="page-wrap">
 
-<h1>Eat Da Burger!</h1>
+  <h1>Eat Da Burger!</h1>
 
+  <div class="uneaten-burgers">
+    <h2>Waiting to be...</h2>
 
-<div class="uneaten-burgers">
-<h2>Waiting to be...</h2>
-
-
- 
-<ul class="uneaten">
-  {{#each burgers}}
-    {{#unless devoured}}
+    <ul class="uneaten">
+      {{#each burgers}}
+      {{#unless devoured}}
       {{> burgers/burger-block devoured=false}}
-    {{/unless}}
-  {{/each}}
-</ul>
+      {{/unless}}
+      {{/each}}
+    </ul>
 
-</div>
-
-<div class="eaten-burgers">
-<h2>DEVOURED!</h2>
-
-
-<ul class="eaten">
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block devoured=true}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-</div>
-
-
-
-<div class="burger-form">
-
-<h2>Add a Burger</h2>
-
-<form class="new-burger-form">
-
-  <div class="form-group">
-   
-    <input type="text" id="burg" name="name" placeholder="Burger name">
-    
   </div>
 
-  <button type="submit">Add</button>
-</form>
-</div>
+  <div class="eaten-burgers">
+    <h2>DEVOURED!</h2>
+
+    <ul class="eaten">
+      {{#each burgers}}
+      {{#if devoured}}
+      {{> burgers/burger-block devoured=true}}
+      {{/if}}
+      {{/each}}
+    </ul>
+
+  </div>
+
+  <div class="burger-form">
+    <h2>Add a Burger</h2>
+
+    <form class="new-burger-form">
+      <div class="form-group">
+        <input type="text" id="burg" name="name" placeholder="Burger name">
+      </div>
+
+      <button type="submit">Add</button>
+    </form>
+  </div>
 
 </div>
