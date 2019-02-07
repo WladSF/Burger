@@ -1,7 +1,7 @@
 {
-  "name": "burger",
+  "name": "Burger",
   "version": "1.0.0",
-  "description": "",
+  "description": "### Overview",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,6 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/WladSF/Burger.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
